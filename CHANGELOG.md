@@ -7,4 +7,6 @@ All notable changes to this project will be documented in this file. See [standa
 ### Added
 
 - Node and Express framwork
-- CHANGELOG.md file
+- Create-react-app
+- Context API feature
+- Fetching data from Express
