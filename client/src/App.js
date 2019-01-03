@@ -1,25 +1,29 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+// import logo from "./logo.svg";
+import "./App.css";
+import { MyContext } from "./mycontext";
+import FirstLvl from "./components/firstlvl";
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: ""
+    };
+  }
+
+  componentDidMount() {
+    fetch("./api/test")
+      .then(res => res.json())
+      .then(result => this.setState({ username: result[0] }));
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <MyContext.Provider value={{ state: this.state }}>
+          <FirstLvl />
+        </MyContext.Provider>
       </div>
     );
   }
