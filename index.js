@@ -1,6 +1,7 @@
 const express = require("express");
 const path = require("path");
 const http = require("http");
+const os = require("os");
 
 const app = express();
 
@@ -8,8 +9,8 @@ const app = express();
 app.use(express.static(path.join(__dirname, "client/build")));
 
 app.get("/api/test", (req, res) => {
-  var test = ["testing"];
-  res.json(test);
+  var username = [os.userInfo().username];
+  res.json(username);
 });
 
 //handles default
